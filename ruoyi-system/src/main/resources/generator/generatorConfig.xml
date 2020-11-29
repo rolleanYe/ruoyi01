@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
+    <!--使用mybatis插件的时候必须要指定classPathEntry-->
+    <classPathEntry location="/Users/yejun/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar"/>
+    <!--id=Mybatis3Context-->
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--  <property name="javaFileEncoding" value="UTF-8"/>-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"></property>
+            <!--是否自动去除注释-->
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
+        <!--数据库连接的url，用户名，密码，一定要指明编码方式-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ry_vue?characterEncoding=utf-8"
+                        userId="root"
+                        password="1020">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.ruoyi.system.domain"
+                            targetProject="/Users/yejun/code/test/ruoyi01/ruoyi-system/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成映射文件的位置-->
+        <sqlMapGenerator targetPackage="mapper.system" targetProject="/Users/yejun/code/test/ruoyi01/ruoyi-system/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成dao接口的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.ruoyi.system.mapper"
+                             targetProject="/Users/yejun/code/test/ruoyi01/ruoyi-system/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--tableName:表名
+            domainObjectName：实体类名
+        -->
+        <table tableName="pf_item_user" domainObjectName="PfItemUser" enableCountByExample="false"
+               enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
+        </table>
+    </context>
+</generatorConfiguration>

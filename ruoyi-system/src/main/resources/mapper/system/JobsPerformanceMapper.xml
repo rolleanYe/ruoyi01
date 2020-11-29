@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.JobsPerformanceMapper">
+
+	<resultMap type="JobsPerformance" id="JobsPerformanceResult">
+		<id     property="performanceId"          column="performance_id"          />
+		<result property="performanceName"        column="performance_name"        />
+		<result property="createBy"       column="create_by"       />
+		<result property="createTime"     column="create_time"     />
+		<result property="updateBy"       column="update_by"       />
+		<result property="updateTime"     column="update_time"     />
+		<result property="remark"         column="remark"          />
+	</resultMap>
+	
+	<sql id="JobsPerformance">
+        select performance_id, performance_name, create_by, create_time, update_by,update_time,remark
+		from jobs_performance
+    </sql>
+
+	<select id="selectJobsPerformanceAll" resultMap="JobsPerformanceResult">
+		<include refid="JobsPerformance"/>
+	</select>
+	
+
+</mapper> 

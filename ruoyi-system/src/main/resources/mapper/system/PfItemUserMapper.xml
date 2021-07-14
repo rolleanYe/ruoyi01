@@ -1,77 +1,95 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ruoyi.system.mapper.PfItemUserMapper" >
-  <resultMap id="BaseResultMap" type="com.ruoyi.system.domain.PfItemUser" >
-    <result column="id" property="id" jdbcType="BIGINT" />
-    <result column="item_score" property="itemScore" jdbcType="INTEGER" />
-    <result column="item_evaluation" property="itemEvaluation" jdbcType="VARCHAR" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="remark" property="remark" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.PfItemUserMapper">
+  <resultMap id="BaseResultMap" type="com.ruoyi.system.domain.PfItemUser">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="item_score" jdbcType="INTEGER" property="itemScore" />
+    <result column="item_evaluation" jdbcType="VARCHAR" property="itemEvaluation" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="INTEGER" property="remark" />
   </resultMap>
-  <insert id="insert" parameterType="com.ruoyi.system.domain.PfItemUser" >
-    insert into pf_item_user (id, item_score, item_evaluation, 
-      create_by, create_time, update_by, 
-      update_time, remark)
-    values (#{id,jdbcType=BIGINT}, #{itemScore,jdbcType=INTEGER}, #{itemEvaluation,jdbcType=VARCHAR}, 
-      #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=INTEGER})
+
+  <insert id="insert" parameterType="com.ruoyi.system.domain.PfItemUser">
+    insert into pf_item_user (id, user_id, item_id,
+      item_score, item_evaluation, create_by,
+      create_time, update_by, update_time,
+      remark)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{itemId,jdbcType=BIGINT},
+      #{itemScore,jdbcType=INTEGER}, #{itemEvaluation,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+      #{remark,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.ruoyi.system.domain.PfItemUser" >
+  <insert id="insertSelective" parameterType="com.ruoyi.system.domain.PfItemUser">
     insert into pf_item_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="itemScore != null" >
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemScore != null">
         item_score,
       </if>
-      <if test="itemEvaluation != null" >
+      <if test="itemEvaluation != null">
         item_evaluation,
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="itemScore != null" >
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemScore != null">
         #{itemScore,jdbcType=INTEGER},
       </if>
-      <if test="itemEvaluation != null" >
+      <if test="itemEvaluation != null">
         #{itemEvaluation,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         #{remark,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
+
 </mapper>
